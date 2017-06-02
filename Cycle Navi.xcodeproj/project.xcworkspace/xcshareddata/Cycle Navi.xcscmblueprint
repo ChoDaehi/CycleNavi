@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D888C30C123CEE18BE592F8118A8107977AC3B84",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "926A7543EDE82A7CFFE7975A7A70A9ADEC7C74CC" : 9223372036854775807,
+    "D888C30C123CEE18BE592F8118A8107977AC3B84" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "9D1BD6A8-0FD2-48A9-9AF1-C57FA9817A65",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "926A7543EDE82A7CFFE7975A7A70A9ADEC7C74CC" : "..",
+    "D888C30C123CEE18BE592F8118A8107977AC3B84" : "CycleNavi\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Cycle Navi",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Cycle Navi.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https%3A\/\/github.com\/%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AEUSER_ID\/HelloGit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "926A7543EDE82A7CFFE7975A7A70A9ADEC7C74CC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ChoDaehi\/CycleNavi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D888C30C123CEE18BE592F8118A8107977AC3B84"
+    }
+  ]
+}

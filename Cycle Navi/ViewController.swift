@@ -18,18 +18,28 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var _heading:CLLocationDirection = 0.0
     var _speed:CLLocationSpeed = 0.0
     var _MaxSpeed:CLLocationSpeed = 0.0
+    var _subMaxSpeed:CLLocationSpeed = 0.0
     var _AverageSpeed:CLLocationSpeed = 0.0
     var distance = 0.0
     var counter = 0.0
+    var cadence = 0.0
+    let delegate = UIApplication.shared.delegate as! AppDelegate
     weak var timer: Timer!
     
-   @IBOutlet weak var FrontGear: UILabel!
-      @IBOutlet var FrontGearStepper: UIStepper!
-    @IBAction func FrontGearStepper(sender: UIStepper) {
-        FrontGear.text = "\(sender.value)"
+    @IBAction func FrontGear(_ sender: UIStepper) {
+        FrontGear.text  = Int((sender as UIStepper!).value).description
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.GearData.Front = Int((sender as UIStepper!).value)
     }
-
+  
+    @IBAction func RearGear(_ sender: UIStepper) {
+        RearGear.text = Int((sender as UIStepper!).value).description
+        let delegate = UIApplication.shared.delegate as! AppDelegate
+        delegate.GearData.Rear = Int((sender as UIStepper!).value)
+    }
     
+    @IBOutlet var FrontGear: UILabel!
+    @IBOutlet var RearGear: UILabel!
     override func viewDidLoad() {
                super.viewDidLoad()
         
@@ -49,11 +59,24 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //方位情報の通知
         if CLLocationManager.headingAvailable()
         { _locationManager?.startUpdatingHeading() }
+
         
         startTimer()
         
     }
+    
+    func locationManager(_ _manager:CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus)  {
+    switch status{
+    case .notDetermined: _locationManager?.requestAlwaysAuthorization()
+          break
+    case .denied: break
+    case .restricted: break
+    case .authorizedAlways: break
+    case .authorizedWhenInUse: break
+    }
+    }
 
+    
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.onTick), userInfo: nil, repeats: true)
     }
@@ -62,13 +85,36 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let label2: UILabel = self.view.viewWithTag(2) as! UILabel
         let label3: UILabel = self.view.viewWithTag(3) as! UILabel
         let label4: UILabel = self.view.viewWithTag(4) as! UILabel
-        label1.text = Int(_speed).description
-        label3.text = Int(_MaxSpeed).description
-        distance += _speed/(3600)*0.01
-        label2.text = (round(distance * 100)/100).description
+        let label5: UILabel = self.view.viewWithTag(5) as! UILabel
+        if _speed < 0
+        { label1.text = "" }
+        else {    label1.text = Int(_speed).description
+                distance += _speed/(3600)*0.01
+                cadence = delegate.GearData.DistanceOfOneRotation
+            }
+        if _MaxSpeed < 0
+        { label3.text = ""}
+        else { if _subMaxSpeed > _MaxSpeed
+                {_MaxSpeed = _subMaxSpeed  }
+                label3.text = Int(_MaxSpeed).description
+            }
+
+        if distance < 0
+        {
+            label2.text = ""
+        }
+        else
+        { label2.text = (round(distance * 100)/100).description }
         counter += 0.01
         _AverageSpeed = distance/counter * 3600
-        label4.text = Int(_AverageSpeed).description
+        if _AverageSpeed < 0 {
+            label4.text = ""
+        }
+        else
+        { label4.text = Int(_AverageSpeed).description }
+        if cadence < 0
+        { label5.text = " 0.0" }
+        else { label5.text = cadence.description }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -76,7 +122,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             return
         }
         if newLocation.speed * 3.6 > _speed
-        { _MaxSpeed = newLocation.speed * 3.6  }
+        { _subMaxSpeed = newLocation.speed * 3.6  }
         _speed = newLocation.speed * 3.6
         
         
@@ -97,8 +143,5 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-
-
 }
+

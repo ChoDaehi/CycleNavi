@@ -17,7 +17,6 @@
 		10D714261EE12B91006799D5 /* Cycle_NaviUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D714251EE12B91006799D5 /* Cycle_NaviUITests.swift */; };
 		10D714361EE27D60006799D5 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D714351EE27D60006799D5 /* SettingViewController.swift */; };
 		10D714381EE29DED006799D5 /* GearValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D714371EE29DED006799D5 /* GearValue.swift */; };
-		10D7143A1EE2B27B006799D5 /* GearMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D714391EE2B27B006799D5 /* GearMemory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		10D714271EE12B91006799D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10D714351EE27D60006799D5 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		10D714371EE29DED006799D5 /* GearValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearValue.swift; sourceTree = "<group>"; };
-		10D714391EE2B27B006799D5 /* GearMemory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GearMemory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +107,6 @@
 				10D714041EE12B91006799D5 /* ViewController.swift */,
 				10D714371EE29DED006799D5 /* GearValue.swift */,
 				10D714351EE27D60006799D5 /* SettingViewController.swift */,
-				10D714391EE2B27B006799D5 /* GearMemory.swift */,
 				10D714061EE12B91006799D5 /* Main.storyboard */,
 				10D7140C1EE12B91006799D5 /* Assets.xcassets */,
 				10D7140E1EE12B91006799D5 /* LaunchScreen.storyboard */,
@@ -275,7 +272,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				10D714051EE12B91006799D5 /* ViewController.swift in Sources */,
-				10D7143A1EE2B27B006799D5 /* GearMemory.swift in Sources */,
 				10D7140B1EE12B91006799D5 /* Cycle_Navi.xcdatamodeld in Sources */,
 				10D714031EE12B91006799D5 /* AppDelegate.swift in Sources */,
 				10D714361EE27D60006799D5 /* SettingViewController.swift in Sources */,

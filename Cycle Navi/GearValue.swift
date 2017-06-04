@@ -9,7 +9,7 @@
 import UIKit
 
 class GearValue: NSObject {
-    var Front:Int = 0
-    var Rear:Int = 0
-    var DistanceOfOneRotation:Double = 0.0
+    var Front: [Double] = [28,38,48]
+    var Rear:[Double] = [32,28,24,21,18,15,13,11,0.0,0.0,0.0,0.0]
+    var Tire:Double = 700
 }

@@ -23,24 +23,64 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     var distance = 0.0
     var counter = 0.0
     var cadence = 0.0
+    var CurrentFront = 0.0
+    var CurrentRear = 0.0
+    var tire = 700.0
     let delegate = UIApplication.shared.delegate as! AppDelegate
     weak var timer: Timer!
     
     @IBAction func FrontGear(_ sender: UIStepper) {
         FrontGear.text  = Int((sender as UIStepper!).value).description
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.GearData.Front = Int((sender as UIStepper!).value)
+        switch Int(atof(FrontGear.text)) {
+        case 1:
+            CurrentFront = delegate.GearData.Front[0]
+        case 2:
+            CurrentFront = delegate.GearData.Front[1]
+        case 3:
+            CurrentFront = delegate.GearData.Front[2]
+        default:
+            break
+        }
+
+
     }
   
     @IBAction func RearGear(_ sender: UIStepper) {
         RearGear.text = Int((sender as UIStepper!).value).description
-        let delegate = UIApplication.shared.delegate as! AppDelegate
-        delegate.GearData.Rear = Int((sender as UIStepper!).value)
-    }
+        switch Int(atof(RearGear.text)) {
+        case 1:
+            CurrentRear = delegate.GearData.Rear[0]
+        case 2:
+            CurrentRear = delegate.GearData.Rear[1]
+        case 3:
+            CurrentRear = delegate.GearData.Rear[2]
+        case 4:
+            CurrentRear = delegate.GearData.Rear[3]
+        case 5:
+            CurrentRear = delegate.GearData.Rear[4]
+        case 6:
+            CurrentRear = delegate.GearData.Rear[5]
+        case 7:
+            CurrentRear = delegate.GearData.Rear[6]
+        case 8:
+            CurrentRear = delegate.GearData.Rear[7]
+        case 9:
+            CurrentRear = delegate.GearData.Rear[8]
+        case 10:
+            CurrentRear = delegate.GearData.Rear[9]
+        case 11:
+            CurrentRear = delegate.GearData.Rear[10]
+        case 12:
+            CurrentRear = delegate.GearData.Rear[11]
+        default:
+            break
+        }
+        }
     
     @IBOutlet var FrontGear: UILabel!
     @IBOutlet var RearGear: UILabel!
     override func viewDidLoad() {
+        tire = delegate.GearData.Tire
                super.viewDidLoad()
         
        
@@ -59,12 +99,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         //方位情報の通知
         if CLLocationManager.headingAvailable()
         { _locationManager?.startUpdatingHeading() }
+        
+
 
         
+
         startTimer()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        tire = delegate.GearData.Tire
+    }
     func locationManager(_ _manager:CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus)  {
     switch status{
     case .notDetermined: _locationManager?.requestAlwaysAuthorization()
@@ -78,7 +123,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
 
     
     func startTimer(){
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(self.onTick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.onTick), userInfo: nil, repeats: true)
     }
     func onTick(){
         let label1: UILabel = self.view.viewWithTag(1) as! UILabel
@@ -87,13 +132,17 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let label4: UILabel = self.view.viewWithTag(4) as! UILabel
         let label5: UILabel = self.view.viewWithTag(5) as! UILabel
         if _speed < 0
-        { label1.text = "" }
+        { label1.text = "0" }
+        else if _speed < 10
+        { cadence = 0
+            label1.text = Int(_speed).description
+        }
         else {    label1.text = Int(_speed).description
                 distance += _speed/(3600)*0.01
-                cadence = delegate.GearData.DistanceOfOneRotation
+            cadence = round(_speed/((tire/1000 * 3.14 ) * (CurrentFront/CurrentRear) * 0.06)*10)/10
             }
         if _MaxSpeed < 0
-        { label3.text = ""}
+        { label3.text = "0"}
         else { if _subMaxSpeed > _MaxSpeed
                 {_MaxSpeed = _subMaxSpeed  }
                 label3.text = Int(_MaxSpeed).description
@@ -101,7 +150,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
 
         if distance < 0
         {
-            label2.text = ""
+            label2.text = "0"
         }
         else
         { label2.text = (round(distance * 100)/100).description }

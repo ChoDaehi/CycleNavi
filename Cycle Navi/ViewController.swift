@@ -100,15 +100,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         if CLLocationManager.headingAvailable()
         { _locationManager?.startUpdatingHeading() }
         
-
-
-        
+                
 
         startTimer()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         tire = delegate.GearData.Tire
+
     }
     func locationManager(_ _manager:CLLocationManager,didChangeAuthorization status: CLAuthorizationStatus)  {
     switch status{
@@ -121,7 +120,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     }
 
-    
     func startTimer(){
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(self.onTick), userInfo: nil, repeats: true)
     }
@@ -138,7 +136,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             label1.text = Int(_speed).description
         }
         else {    label1.text = Int(_speed).description
-                distance += _speed/(3600)*0.01
+                distance += _speed/(3600)*0.001
             cadence = round(_speed/((tire/1000 * 3.14 ) * (CurrentFront/CurrentRear) * 0.06)*10)/10
             }
         if _MaxSpeed < 0
@@ -154,7 +152,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         }
         else
         { label2.text = (round(distance * 100)/100).description }
-        counter += 0.01
+        counter += 0.001
         _AverageSpeed = distance/counter * 3600
         if _AverageSpeed < 0 {
             label4.text = ""

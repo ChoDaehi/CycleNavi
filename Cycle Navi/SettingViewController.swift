@@ -13,6 +13,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
     let sc = UIScrollView()
     var front = 0.0
     var rear = 0.0
+    var txtActiveField = UITextField()
     var distanceOfOneRotation = 0.0
     @IBOutlet var tire: UITextField!
    
@@ -32,6 +33,7 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
     @IBOutlet var R10: UITextField!
     @IBOutlet var R11: UITextField!
     @IBOutlet var R12: UITextField!
+    @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
         sc.frame = self.view.frame;
@@ -91,6 +93,46 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
     }
     @IBAction func R12(_ sender: UITextField) {
     }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField)  {
+        txtActiveField = textField
+        
+    }
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+   
+    func handleKeyboardWillShowNotification(_ notification:Notification)
+    {
+        let userInfo = (notification as NSNotification).userInfo!
+        // キーボードの大きさを取得
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        
+        // 画面サイズの取得 (ステータスバー領域を含む画面のサイズを返す)
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        
+        // TextFieldの下辺を割り出す
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 32
+        
+        // キーボードの大きさを取得
+        let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
+        
+        // TextFieldの表示位置がキーボードより「下」の場合、画面を移動させる
+        if txtLimit >= kbdLimit {
+            ScrollView.contentOffset.y = txtLimit - kbdLimit
+        }
+
+        
+    }
+ func handleKeyboardWillHideNotification(_ notification: Notification) {
+        ScrollView.contentOffset.y = 0
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
        let delegate = UIApplication.shared.delegate as! AppDelegate

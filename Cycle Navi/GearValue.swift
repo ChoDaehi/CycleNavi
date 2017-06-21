@@ -12,4 +12,6 @@ class GearValue: NSObject {
     var Front: [Double] = [28,38,48]
     var Rear:[Double] = [32,28,24,21,18,15,13,11,0.0,0.0,0.0,0.0]
     var Tire:Double = 700
+    var FrontNo = 0.0
+    var RearNo = 0.0
 }

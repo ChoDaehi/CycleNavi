@@ -9,8 +9,8 @@
 import UIKit
 import Darwin
 
-class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewDelegate{
-    let sc = UIScrollView()
+class SettingViewController: UIViewController, UITextFieldDelegate{
+   // let sc = UIScrollView()
     var front = 0.0
     var rear = 0.0
     var txtActiveField = UITextField()
@@ -36,8 +36,30 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
     @IBOutlet weak var ScrollView: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        sc.frame = self.view.frame;
-        sc.delegate = self;
+     //   sc.frame = self.view.frame
+      //  sc.delegate = self
+        
+        tire.delegate = self
+        
+        F1.delegate = self
+        F2.delegate = self
+        F3.delegate = self
+        
+        R1.delegate = self
+        R2.delegate = self
+        R3.delegate = self
+        
+        R4.delegate = self
+        R5.delegate = self
+        R6.delegate = self
+        
+        R7.delegate = self
+        R8.delegate = self
+        R9.delegate = self
+       
+        R10.delegate = self
+        R11.delegate = self
+        R12.delegate = self
     let delegate = UIApplication.shared.delegate as! AppDelegate
         tire.text = delegate.GearData.Tire.description
         
@@ -59,44 +81,18 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
         R12.text = round(delegate.GearData.Rear[11]).description
     
     }
-    @IBAction func tire(_ sender: UITextField) {
-    }
-   
-    @IBAction func F1(_ sender: UITextField) {
-    }
-    @IBAction func F2(_ sender: UITextField) {
-    }
-    @IBAction func F3(_ sender: UITextField) {
-    }
-    
-    @IBAction func R1(_ sender: UITextField) {
-    }
-    @IBAction func R2(_ sender: UITextField) {
-    }
-    @IBAction func R3(_ sender: UITextField) {
-    }
-    @IBAction func R4(_ sender: UITextField) {
-    }
-    @IBAction func R5(_ sender: UITextField) {
-    }
-    @IBAction func R6(_ sender: UITextField) {
-    }
-    @IBAction func R7(_ sender: UITextField) {
-    }
-    @IBAction func R8(_ sender: UITextField) {
-    }
-    @IBAction func R9(_ sender: UITextField) {
-    }
-    @IBAction func R10(_ sender: UITextField) {
-    }
-    @IBAction func R11(_ sender: UITextField) {
-    }
-    @IBAction func R12(_ sender: UITextField) {
-    }
+
     
     func textFieldDidBeginEditing(_ textField: UITextField)  {
         txtActiveField = textField
         
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+
+        textField.resignFirstResponder()
+        
+        return true
     }
 
     
@@ -104,10 +100,10 @@ class SettingViewController: UIViewController, UITextFieldDelegate,UIScrollViewD
         super.viewWillAppear(animated)
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
+ /*       notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+ */   }
    
-    func handleKeyboardWillShowNotification(_ notification:Notification)
+ func handleKeyboardWillShowNotification(_ notification:Notification)
     {
         let userInfo = (notification as NSNotification).userInfo!
         // キーボードの大きさを取得

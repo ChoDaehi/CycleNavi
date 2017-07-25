@@ -186,6 +186,10 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.performSegue(withIdentifier: "ToSetting", sender: self )
     }
     
+    @IBAction func map(_ sender: Any) {
+        self.performSegue(withIdentifier: "ToMap", sender: self)
+    }
+    
       override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

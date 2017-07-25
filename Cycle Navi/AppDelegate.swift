@@ -30,16 +30,77 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
+        
+        GearData.Front[0] = GearData.Front[0]
+        GearData.Rear[0]  = GearData.Rear[0]
+        
+        GearData.Front[1] = GearData.Front[1]
+        GearData.Rear[1]  = GearData.Rear[1]
+        
+        GearData.Front[2] = GearData.Front[2]
+        GearData.Rear[2]  = GearData.Rear[2]
+        
+        GearData.Rear[3]  = GearData.Rear[3]
+
+        
+        GearData.Rear[4] = GearData.Rear[4]
+        GearData.Rear[5] = GearData.Rear[5]
+        GearData.Rear[6] = GearData.Rear[6]
+        GearData.Rear[7] = GearData.Rear[7]
+        GearData.Rear[8] = GearData.Rear[8]
+        GearData.Rear[9] = GearData.Rear[9]
+        GearData.Rear[10]  = GearData.Rear[10]
+        GearData.Rear[11]  = GearData.Rear[11]
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        GearData.Front[0] = GearData.Front[0]
+        GearData.Rear[0]  = GearData.Rear[0]
+        
+        GearData.Front[1] = GearData.Front[1]
+        GearData.Rear[1]  = GearData.Rear[1]
+        
+        GearData.Front[2] = GearData.Front[2]
+        GearData.Rear[2]  = GearData.Rear[2]
+        
+        GearData.Rear[3]  = GearData.Rear[3]
+        
+        
+        GearData.Rear[4] = GearData.Rear[4]
+        GearData.Rear[5] = GearData.Rear[5]
+        GearData.Rear[6] = GearData.Rear[6]
+        GearData.Rear[7] = GearData.Rear[7]
+        GearData.Rear[8] = GearData.Rear[8]
+        GearData.Rear[9] = GearData.Rear[9]
+        GearData.Rear[10]  = GearData.Rear[10]
+        GearData.Rear[11]  = GearData.Rear[11]
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
+        GearData.Front[0] = GearData.Front[0]
+        GearData.Rear[0]  = GearData.Rear[0]
+        
+        GearData.Front[1] = GearData.Front[1]
+        GearData.Rear[1]  = GearData.Rear[1]
+        
+        GearData.Front[2] = GearData.Front[2]
+        GearData.Rear[2]  = GearData.Rear[2]
+        
+        GearData.Rear[3]  = GearData.Rear[3]
+        
+        
+        GearData.Rear[4] = GearData.Rear[4]
+        GearData.Rear[5] = GearData.Rear[5]
+        GearData.Rear[6] = GearData.Rear[6]
+        GearData.Rear[7] = GearData.Rear[7]
+        GearData.Rear[8] = GearData.Rear[8]
+        GearData.Rear[9] = GearData.Rear[9]
+        GearData.Rear[10]  = GearData.Rear[10]
+        GearData.Rear[11]  = GearData.Rear[11]
         self.saveContext()
     }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G16b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Mgr-8e-HSX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G24b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="Mgr-8e-HSX">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -452,7 +452,7 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                 <connections>
                                                     <action selector="F1:" destination="WId-cu-0WQ" eventType="editingDidEndOnExit" id="eHc-OS-BfT"/>
                                                 </connections>
@@ -603,6 +603,7 @@
                         <outlet property="R7" destination="Lbu-Lk-arn" id="Dxm-Wh-vC9"/>
                         <outlet property="R8" destination="gnd-rW-6pt" id="3v9-q7-W5K"/>
                         <outlet property="R9" destination="KXo-TO-3tN" id="bfh-cL-Vba"/>
+                        <outlet property="Scrollview" destination="qTj-ft-arE" id="ibB-96-Mtf"/>
                         <outlet property="tire" destination="DLd-xy-DX5" id="IlA-ML-hzO"/>
                     </connections>
                 </viewController>

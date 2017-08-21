@@ -102,6 +102,8 @@ class SettingViewController: UIViewController, UITextFieldDelegate, UIScrollView
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillShowNotification(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
       notificationCenter.addObserver(self, selector: #selector(SettingViewController.handleKeyboardWillHideNotification(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+
    }
     
     
@@ -116,19 +118,17 @@ class SettingViewController: UIViewController, UITextFieldDelegate, UIScrollView
         let myBoundSize: CGSize = UIScreen.main.bounds.size
         
         // TextFieldの下辺を割り出す
-        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 80.0
+        let txtLimit = txtActiveField.frame.origin.y + txtActiveField.frame.height + 120.0
         
         // キーボードの大きさを取得
         let kbdLimit = myBoundSize.height - keyboardScreenEndFrame.size.height
         
-        
+        DefaultView = Double(Scrollview.contentOffset.y)
         
         // TextFieldの表示位置がキーボードより「下」の場合、画面を移動させる
         if txtLimit >= kbdLimit {
            Scrollview.contentOffset.y = txtLimit - kbdLimit
        }
-        else {DefaultView = Double(Scrollview.contentOffset.y)
-                }
 
         
     }
